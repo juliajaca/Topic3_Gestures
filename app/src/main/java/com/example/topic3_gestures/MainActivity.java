@@ -16,23 +16,47 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         // Añadimos el listener al botón (el boton es una vista)
         //https://stackoverflow.com/questions/39836303/cannot-resolve-symbol-setontouchlistener
         View myView = findViewById(R.id.button);
         myView.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v , MotionEvent event) {
                 //Le mando hacer algo
+                //ejemplo con el toast
                 Context context = getApplicationContext();
                 CharSequence text = "Hello toast! Evento!";
                 int duration = Toast.LENGTH_SHORT;
 
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
-                //
+                // ejemplo con MotionEvent
                 if (event.getAction() == MotionEvent.ACTION_DOWN ) {
                     //Insert desired code here
                     Log.d("movimiento", "ACCIONNNNNNNN APOYO");
+                    return true;
+                }
+                return false;
+
+            }
+        });
+
+        //pongo un listener en mi string de hola munda
+        View holaMundo = findViewById(R.id.textView);
+        holaMundo.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                //Le mando hacer algo
+                //ejemplo con el toast
+                Context context = getApplicationContext();
+                CharSequence text = "Hello toast! Evento! HOLA MUNDO";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                // ejemplo con MotionEvent
+                if (event.getAction() == MotionEvent.ACTION_DOWN ) {
+                    //Insert desired code here
+                    Log.d("movimiento", "ACCIONNNNNNNN HOLA");
                     return true;
                 }
                 return false;
