@@ -2,10 +2,12 @@ package com.example.topic3_gestures;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MotionEventCompat;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,9 +21,22 @@ public class MainActivity extends AppCompatActivity {
         //https://stackoverflow.com/questions/39836303/cannot-resolve-symbol-setontouchlistener
         View myView = findViewById(R.id.button);
         myView.setOnTouchListener(new View.OnTouchListener() {
-            public boolean onTouch(View v, MotionEvent event) {
-                // ... Respond to touch events
-                return true;
+            public boolean onTouch(View v , MotionEvent event) {
+                //Le mando hacer algo
+                Context context = getApplicationContext();
+                CharSequence text = "Hello toast! Evento!";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                //
+                if (event.getAction() == MotionEvent.ACTION_DOWN ) {
+                    //Insert desired code here
+                    Log.d("movimiento", "ACCIONNNNNNNN APOYO");
+                    return true;
+                }
+                return false;
+
             }
         });
     }
